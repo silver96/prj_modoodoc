@@ -1,3 +1,5 @@
+#키워드기반으로 한 추천시스템 구현에 활용
+
 import pandas as pd
 from gensim.models import Word2Vec
 
