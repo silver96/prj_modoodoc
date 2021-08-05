@@ -14,7 +14,8 @@ driver.implicitly_wait(3)
 names = []
 reviews = []
 
-categories = ['산부인과']
+categories = ['치과', '피부과', '성형외과', '안과', '산부인과', '비뇨기과', '정신건강의학과', '정형외과', '마취통증의학과',
+              '신경외과', '재활의학과', '영상의학과', '외과', '신경과', '소아과', '내과', '이비인후과', '가정의학과', '한의원']
 # url = f'https://www.modoodoc.com/hospitals/?search_query={categories}'
 
 url_for_login = 'https://www.modoodoc.com/'
