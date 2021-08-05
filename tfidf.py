@@ -1,5 +1,5 @@
 #문장의 단어 토큰을 생성하고 각 단어 수와 가중치를 조정하여 문자를 순서 벡터로 변환
-#추천시스템을 통한 성능평가에 활용
+#제목을 기반으로 한 추천시스템 구현에 활용
 
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
