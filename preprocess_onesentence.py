@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-df = pd.read_csv('./cleaned_review/total_cleaned_review_du.csv', index_col=0)
+df = pd.read_csv('./preprocess/total_cleaned_review_du.csv', index_col=0)
 df.dropna(inplace=True)
 print(len(df['names'].unique()))
 one_sentences = []
@@ -17,4 +17,4 @@ df_one_sentences = pd.DataFrame({'category':categories, 'names':df['names'].uniq
 
 print(df_one_sentences.head())
 print(df_one_sentences.info())
-df_one_sentences.to_csv('./cleaned_review/total_hospital_review_one_sentence.csv', encoding='utf-8-sig')
+df_one_sentences.to_csv('./preprocess/total_hospital_review_one_sentence.csv', encoding='utf-8-sig')
