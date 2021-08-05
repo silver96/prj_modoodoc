@@ -52,4 +52,4 @@ for category in categories:
 
     df = df[['category', 'names', 'cleaned_sentences']] # 타이틀과 전처리가 된 문장만 뽑아내기
     print(df.info())
-    df.to_csv(f'./cleaned_review/cleaned_review_{category}.csv') # 재저장
+    df.to_csv(f'./preprocess/cleaned_review_{category}.csv') # 재저장
