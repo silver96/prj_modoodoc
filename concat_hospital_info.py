@@ -9,7 +9,7 @@ import pandas as pd
 # exit()
 
 
-df = pd.read_csv('../preprocess/cleaned_review/total_hospital_review_one_sentence.csv', index_col=0)
+df = pd.read_csv('./preprocess/total_hospital_review_one_sentence.csv', index_col=0)
 print(df.info())
 df.drop_duplicates()
 df.dropna(inplace=True)
