@@ -129,9 +129,9 @@ class Exam(QWidget, form_window):
     def getRecommendation(self, cosine_sim):
         simScores = list(enumerate(cosine_sim[-1]))
         simScores = sorted(simScores, key=lambda x: x[1],
-                           reverse=True)
+                           reverse=True) #점수순으로 나열
         simScores = simScores[0:10]
-        movieidx = [i[0] for i in simScores]
+        movieidx = [i[0] for i in simScores] 
         RecMovielist = self.df_review.iloc[movieidx]
         #print(RecMovielist)
         return RecMovielist.names
@@ -141,25 +141,25 @@ class Exam(QWidget, form_window):
     def btn_recommend_slot(self):
         title = self.le_title.text()
 
-        try:
+        try: #병원명 기준 추천
             if title in list(self.df_review['names']):
                 movie_idx = self.df_review[
                     self.df_review['names']==title].index[0]
                 cosine_sim = linear_kernel(
-                    self.Tfidf_matrix[movie_idx],
+                    self.Tfidf_matrix[movie_idx], #linear_kernel을 통해 병원명을 입력하면 코사인 유사도 계산됨
                     self.Tfidf_matrix)
                 # recommend = '\n'.join(
                 #     list(self.getRecommendation(cosine_sim))[1:])
-                recommend = list(self.getRecommendation(cosine_sim))[:-1]
+                recommend = list(self.getRecommendation(cosine_sim))[:-1] #높은 순에서 낮은 순으로 정렬
 
             #elif title in total :
 
 
-            else:
+            else: #리뷰기반 추천
                 print(title)
                 sentence = [title] * 10
 
-                sim_word = self.embedding_model.wv.most_similar(title, topn=10)
+                sim_word = self.embedding_model.wv.most_similar(title, topn=10) #가장 비슷한 병원 추출 
                 labels = []
                 for label, _ in sim_word:
                     labels.append(label)
@@ -171,7 +171,7 @@ class Exam(QWidget, form_window):
                 sentence = ' '.join(sentence)
                 sentence_vec = self.Tfidf.transform([sentence])
                 cosine_sim = linear_kernel(sentence_vec,
-                                           self.Tfidf_matrix)
+                                           self.Tfidf_matrix) #문장을 벡터화시킨 값을 입력하여 코사인유사도순으로 계산
                 # recommend = '\n'.join(
                 #     list(self.getRecommendation(cosine_sim))[:-1])
 
